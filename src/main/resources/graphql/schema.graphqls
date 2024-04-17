@@ -1,16 +1,31 @@
-type Query {
-    bookById(id: ID): Book
-}
-
-type Book {
-    id: ID
+type User {
+    userId:ID!
     name: String
-    pageCount: Int
-    author: Author
+    email: String
+    phone: String
+    password: String
+    orders:[Order]
 }
 
-type Author {
-    id: ID
-    firstName: String
-    lastName: String
+type Order {
+    orderId:ID!
+    orderDetail: String
+    address: String
+    price: Int
+    user: User
+}
+
+type Query {
+    getUsers:[User],
+    getUser(userId:ID!):User
+    getOrders:[Order]
+    getOrder(orderId:ID!):Order
+}
+
+type Mutation {
+    createUser(name:String,phone:String, email:String, password:String):User
+    deleteUser(userId:ID!):Boolean
+
+    createOrder(orderDetail:String,address:String,price:Int,userId:ID!):Order
+    deleteOrder(orderId:ID!):Boolean
 }
