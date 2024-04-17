@@ -16,6 +16,26 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+
+    public Order() {
+    }
+
+    public Order(String orderDetails, String address, int price, User user) {
+        this.orderDetails = orderDetails;
+        this.address = address;
+        this.price = price;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public int getOrderId() {
         return orderId;
     }

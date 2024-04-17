@@ -19,6 +19,24 @@ public class User {
     @OneToMany(mappedBy ="user", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders = new ArrayList<Order>();
 
+    public User() {
+    }
+
+    public User(String name, String email, String phone, String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     public int getUserId() {
         return userId;
     }
